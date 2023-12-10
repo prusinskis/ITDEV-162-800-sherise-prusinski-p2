@@ -20,6 +20,18 @@ export class HomeComponent implements OnInit {
 
   markAsDone(id:any) {
     console.log("Mark As Done with id "+id+" clicked!")
+    if(this.posts != null) {
+      for(let post of this.posts) {
+        if(post.id == id) {
+          post.Done = true;
+          this.http.put('http://localhost:5128/api/posts',post).subscribe(
+            response => {post = response; },
+            error => {console.log(error) }
+            );
+          break
+        }
+      }
+    }
   }
 
   delete(id:any) {

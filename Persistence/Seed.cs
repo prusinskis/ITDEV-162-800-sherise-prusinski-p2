@@ -17,7 +17,8 @@ namespace Persistence
                     new Post {
                         Title = "First Task",
                         Body = "This is my first task in Taskkeeper app",
-                        Date = DateTime.Now.AddDays(-10)
+                        Date = DateTime.Now.AddDays(-10),
+                        Done = false
                     }
                 };
 

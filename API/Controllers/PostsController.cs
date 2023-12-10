@@ -86,6 +86,7 @@ namespace API.Controllers
             post.Title = request.Title != null ? request.Title : post.Title;
             post.Body = request.Body != null ? request.Body : post.Body;
             post.Date = request.Date != DateTime.MinValue ? request.Date : post.Date;
+            post.Done = request.Done;
 
             var success = context.SaveChanges() > 0;
 
