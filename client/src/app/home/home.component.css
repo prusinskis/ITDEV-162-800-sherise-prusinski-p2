@@ -12,5 +12,10 @@
 }
 .post-card:hover {
     cursor: pointer;
-    background-color: #efefef;
+    background-color: lightpink;
+}
+
+.post-card-done:hover {
+    cursor: pointer;
+    background-color: lightgreen;
 }
