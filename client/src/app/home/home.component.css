@@ -3,6 +3,14 @@
     margin: 40px auto;
 }
 
+.post-card[data-status="false"] {
+    color: red;
+}
+
+.post-card[data-status="true"] {
+    color: green;
+    text-decoration: line-through;
+}
 .post-card:hover {
     cursor: pointer;
     background-color: #efefef;

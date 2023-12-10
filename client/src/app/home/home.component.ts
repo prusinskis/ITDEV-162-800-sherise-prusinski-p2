@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +9,25 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   posts:any;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private _elementRef : ElementRef) { }
 
   ngOnInit(): void {
       this.http.get('http://localhost:5128/api/posts').subscribe(
-      response => {this.posts = response; },
+      response => {
+          this.posts = response; 
+          console.log("Component loaded : home")
+          for(let post of this.posts) {
+            var element = this._elementRef.nativeElement.querySelector("[id='"+post.id+"']")
+            console.log("trying for element with id " + post.id)
+            if(element !=null) {
+              console.log("Setting data-status " + post.done)
+              element.setAttribute("data-status",post.done)
+            }
+            else {
+              console.log("element is null")
+            }
+          }
+      },
       error => {console.log(error) }
     );
   }
@@ -28,6 +42,7 @@ export class HomeComponent implements OnInit {
             response => {post = response; },
             error => {console.log(error) }
             );
+          location.reload();
           break
         }
       }
@@ -56,4 +71,5 @@ export class HomeComponent implements OnInit {
   viewPost(id:any) {
       console.log("viewPost with id "+id+" clicked!")
   }
+
 }
