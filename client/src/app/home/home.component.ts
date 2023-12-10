@@ -39,10 +39,14 @@ export class HomeComponent implements OnInit {
         if(post.id == id) {
           post.done = true;
           this.http.put('http://localhost:5128/api/posts?Content-Type=application/json',post).subscribe(
-            response => {post = response; },
-            error => {console.log(error) }
+              response => {
+                post = response; 
+              },
+              error => {
+                post.done = false;
+                console.log(error) 
+              }
             );
-          location.reload();
           break
         }
       }
@@ -58,10 +62,14 @@ export class HomeComponent implements OnInit {
             body: post
           };
           this.http.delete('http://localhost:5128/api/posts?Content-Type=application/json',options).subscribe(
-            response => {post = response; },
-            error => {console.log(error) }
+              response => {
+                post = response;
+                location.reload();
+              },
+              error => {
+                console.log(error) 
+              }
             );
-          location.reload();
           break
         }
       }
@@ -71,5 +79,4 @@ export class HomeComponent implements OnInit {
   viewPost(id:any) {
       console.log("viewPost with id "+id+" clicked!")
   }
-
 }
