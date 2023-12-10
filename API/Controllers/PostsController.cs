@@ -72,7 +72,11 @@ namespace API.Controllers
 
             throw new Exception("Error creating post");
         }
-
+        /// <summary>
+        /// PUT api/post
+        /// </summary>
+        /// <param name="request">JSON request containing one or more updated post fields</param>
+        /// <returns>An updated post</returns>
         [HttpPut(Name = "Update")]
         public ActionResult<Post> Update([FromBody] Post request)
         {
@@ -98,5 +102,29 @@ namespace API.Controllers
             throw new Exception("Error updating post");
         }
 
+        /// <summary>
+        /// DELETE api/post
+        /// </summary>
+        /// <param name="request">JSON request containing one or more updated post fields</param>
+        /// <returns>Deleted post</returns>
+        [HttpDelete(Name = "Delete")]
+        public ActionResult<Post> Delete([FromBody] Post request)
+        {
+            var post = context.Posts.Find(request.Id);
+            if (post == null)
+            {
+                throw new Exception("could not find post");
+            }
+
+            context.Posts.Remove(post);
+            var success = context.SaveChanges() > 0;
+
+            if (success)
+            {
+                return Ok(post);
+            }
+
+            throw new Exception("Error updating post");
+        }
     }
 }

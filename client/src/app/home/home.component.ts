@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
       for(let post of this.posts) {
         if(post.id == id) {
           post.Done = true;
-          this.http.put('http://localhost:5128/api/posts',post).subscribe(
+          this.http.put('http://localhost:5128/api/posts?Content-Type=application/json',post).subscribe(
             response => {post = response; },
             error => {console.log(error) }
             );
@@ -36,6 +36,18 @@ export class HomeComponent implements OnInit {
 
   delete(id:any) {
     console.log("Delete with id "+id+" clicked!")
+    if(this.posts != null) {
+      for(let post of this.posts) {
+        if(post.id == id) {
+          post.Done = true;
+          this.http.delete('http://localhost:5128/api/posts?Content-Type=application/json',post).subscribe(
+            response => {post = response; },
+            error => {console.log(error) }
+            );
+          break
+        }
+      }
+    }
   }
 
   viewPost(id:any) {
