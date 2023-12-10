@@ -1,14 +1,14 @@
 
 <div *ngFor="let post of posts">
     <mat-card id="{{post.id}}" data-status="true" (click)="viewPost(post.id)" class="post-card">
-        <mat-card-title>{{post.title}}</mat-card-title>
+        <mat-card-title >{{post.title}}</mat-card-title>
         <mat-card-content >
             <p>{{post.date | date : 'longDate'}}</p>
             <p>{{post.body}}</p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button (click)="markAsDone(this.post.id)" >Mark as DONE</button>
-            <button mat-button (click)="delete(this.post.id)" >Delete</button>
+            <button mat-button (click)="markAsDone(post.id)" >Mark as DONE</button>
+            <button mat-button (click)="delete(post.id)" >Delete</button>
         </mat-card-actions>
     </mat-card>
 </div>
