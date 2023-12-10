@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "3e955685-dab3-4b07-b35a-e6fc9637e18d",
+		"name": "itdev162",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23441367"
+	},
+	"item": [
+		{
+			"name": "Get Posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5128/api/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5128",
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5128/api/posts/2e0d9094-2f3b-49c8-825a-eb1497fb60aa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5128",
+					"path": [
+						"api",
+						"posts",
+						"2e0d9094-2f3b-49c8-825a-eb1497fb60aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require('moment');\r",
+							"var date = moment().toISOString();\r",
+							"\r",
+							"pm.environment.set('theDate', date);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"{{$guid}}\",\r\n    \"title\":\"Test post created by Postman\",\r\n    \"body\" : \"Lorem Ipsum is simply dummy text of the printing and typestting industry.\",\r\n    \"date\":\"{{theDate}}\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5128/api/posts?Content-Type=application/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5128",
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Post",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var moment = require('moment');\r",
+							"var date = moment().toISOString();\r",
+							"\r",
+							"pm.environment.set('theDate', date);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"59981624-d836-4a1c-9aba-c8caf5400b10\",\r\n    \"title\":\"Test post created by Postman - Updated\",\r\n    \"body\" : \"Lorem Ipsum is simply dummy text of the printing and typestting industry.\",\r\n    \"date\":\"{{theDate}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5128/api/posts?Content-Type=application/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5128",
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
