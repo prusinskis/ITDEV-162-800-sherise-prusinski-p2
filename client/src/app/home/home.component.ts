@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   posts:any;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private route: Router) { }
 
   ngOnInit(): void {
       this.http.get('http://localhost:5128/api/posts').subscribe(
@@ -23,7 +25,7 @@ export class HomeComponent implements OnInit {
     if(this.posts != null) {
       for(let post of this.posts) {
         if(post.id == id) {
-          post.Done = true;
+          post.done = true;
           this.http.put('http://localhost:5128/api/posts?Content-Type=application/json',post).subscribe(
             response => {post = response; },
             error => {console.log(error) }
@@ -39,11 +41,11 @@ export class HomeComponent implements OnInit {
     if(this.posts != null) {
       for(let post of this.posts) {
         if(post.id == id) {
-          post.Done = true;
           this.http.delete('http://localhost:5128/api/posts?Content-Type=application/json',post).subscribe(
             response => {post = response; },
             error => {console.log(error) }
             );
+          this.route.navigate(["/"]);
           break
         }
       }
