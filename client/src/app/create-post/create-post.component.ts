@@ -17,7 +17,7 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createPost() {
+  addTask() {
     this.model.date = new Date();
     this.http.post('http://localhost:5128/api/posts', this.model).subscribe(
     repsonse => {this.home()},

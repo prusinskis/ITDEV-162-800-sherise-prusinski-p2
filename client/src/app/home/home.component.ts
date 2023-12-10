@@ -17,5 +17,11 @@ export class HomeComponent implements OnInit {
       error => {console.log(error) }
     );
   }
+  markAsDone() {
+    console.log("Mark As Done clicked!")
+  }
 
+  delete() {
+    console.log("Delete clicked!")
+  }
 }

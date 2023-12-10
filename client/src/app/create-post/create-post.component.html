@@ -1,4 +1,4 @@
-<form #createPostForm="ngForm" (ngSubmit)="createPost()" class="post-form">
+<form #createPostForm="ngForm" (ngSubmit)="addTask()" class="post-form">
     <mat-form-field appearance="fill" class="form-field">
         <mat-label>Title</mat-label>
         <input matInput name="title" [(ngModel)]="model.title" placeholder="Title">
