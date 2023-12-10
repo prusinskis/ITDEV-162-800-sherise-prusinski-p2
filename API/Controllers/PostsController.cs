@@ -111,7 +111,6 @@ namespace API.Controllers
         public ActionResult<Post> Delete([FromBody] Post request)
         {
             var post = context.Posts.Find(request.Id);
-            Console.WriteLine("Post id to be delete : " + request.Id);
             if (post == null)
             {
                 throw new Exception("could not find post");

@@ -15,20 +15,10 @@ export class HomeComponent implements OnInit {
       this.http.get('http://localhost:5128/api/posts').subscribe(
       response => {
           this.posts = response; 
-          console.log("Component loaded : home")
-          for(let post of this.posts) {
-            var element = this._elementRef.nativeElement.querySelector("[id='"+post.id+"']")
-            console.log("trying for element with id " + post.id)
-            if(element !=null) {
-              console.log("Setting data-status " + post.done)
-              element.setAttribute("data-status",post.done)
-            }
-            else {
-              console.log("element is null")
-            }
-          }
       },
-      error => {console.log(error) }
+      error => {
+        console.log(error) 
+      }
     );
   }
 
