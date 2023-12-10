@@ -1,13 +1,12 @@
 .post-card {
     max-width: 500px;
     margin: 40px auto;
-}
-
-.post-card[data-status="false"] {
     color: red;
 }
 
-.post-card[data-status="true"] {
+.post-card-done {
+    max-width: 500px;
+    margin: 40px auto;
     color: green;
     text-decoration: line-through;
 }

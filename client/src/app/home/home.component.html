@@ -1,6 +1,6 @@
 
 <div *ngFor="let post of posts">
-    <mat-card id="{{post.id}}" data-status="true" (click)="viewPost(post.id)" class="post-card">
+    <mat-card id="{{post.id}}" (click)="viewPost(post.id)" class="{{post.done === true?'post-card-done':'post-card'}}">
         <mat-card-title >{{post.title}}</mat-card-title>
         <mat-card-content >
             <p>{{post.date | date : 'longDate'}}</p>
