@@ -17,11 +17,16 @@ export class HomeComponent implements OnInit {
       error => {console.log(error) }
     );
   }
-  markAsDone() {
-    console.log("Mark As Done clicked!")
+
+  markAsDone(id:any) {
+    console.log("Mark As Done with id "+id+" clicked!")
   }
 
-  delete() {
-    console.log("Delete clicked!")
+  delete(id:any) {
+    console.log("Delete with id "+id+" clicked!")
+  }
+
+  viewPost(id:any) {
+      console.log("viewPost with id "+id+" clicked!")
   }
 }
